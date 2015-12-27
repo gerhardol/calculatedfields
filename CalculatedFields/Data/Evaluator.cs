@@ -157,7 +157,7 @@
                                         virtualFieldsRow.Condition,
                                         virtualFieldsRow);
 
-                                    if (result == "")
+                                    if ((string)result == "")
                                     {
                                         result = "NaN";
                                     }
@@ -189,8 +189,6 @@
                         {
                             if (progressBarForm.Cancelled || (testRun && actualActivity >= 30))
                             {
-                                SmoothingSetDefault();
-                                progressBarForm.Close();
                                 break;
                             }
 
@@ -266,22 +264,19 @@
 
                         if (progressBarForm.Cancelled || (testRun && actualActivity >= 30))
                         {
-                            SmoothingSetDefault();
-                            progressBarForm.Close();
                             break;
                         }
                     }
                 }
                 catch (Exception)
                 {
-                    SmoothingSetDefault();
-                    progressBarForm.Close();
-
                     throw;
                 }
-
-                SmoothingSetDefault();
-                progressBarForm.Close();
+                finally
+                {
+                    SmoothingSetDefault();
+                    progressBarForm.Close();
+                }
             }
         }
 

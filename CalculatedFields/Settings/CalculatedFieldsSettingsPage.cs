@@ -10,7 +10,7 @@
 
     using ZoneFiveSoftware.Common.Visuals;
 
-    internal class CalculatedFieldsSettingsPage : ISettingsPage
+    internal class CalculatedFieldsSettingsPage : ISettingsPage, IDisposable
     {
         #region Constants and Fields
 
@@ -20,6 +20,7 @@
 
         #region Events
 
+#pragma warning disable 67
         public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
@@ -104,6 +105,14 @@
             if (this.control != null)
             {
                 //this.control.UICultureChanged(culture);
+            }
+        }
+
+        public void Dispose()
+        {
+            if (this.control == null)
+            {
+                this.control.Dispose();
             }
         }
 

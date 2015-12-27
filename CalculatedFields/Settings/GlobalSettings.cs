@@ -219,7 +219,7 @@
                 XmlNodeList rowsNode = null;
                 XmlNodeList nestedRowsNode = null;
                 XmlNodeList virtualRowsNode = null;
-                
+
                 foreach (XmlNode node in document.ChildNodes[0].ChildNodes)
                 {
                     if (node.Name == "Rows")
@@ -288,9 +288,11 @@
             }
             catch (Exception)
             {
+            }
+            finally
+            {
                 reader.Close();
             }
-            reader.Close();
         }
 
         public static void SaveSettings()
